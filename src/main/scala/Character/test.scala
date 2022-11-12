@@ -1,10 +1,10 @@
 package Character
-import Character.CharacterRarity
 
+import Character.CharacterRarity
+import Character.CharacterAttributes
+import Inventory.CharacterInventory
 object MyClass {
   def main(args: Array[String]) : Unit = {
-    println("hello from the main method")
-    println(CharacterRarity.EPIC.id)
 
     val info : PersonalInfo = new PersonalInfo(
       name = "Testy",
@@ -18,17 +18,27 @@ object MyClass {
      )
 
     val attr : CharacterAttributes = new CharacterAttributes(
-      rarity = CharacterRarity.RARE,
-      attribute = "", //Todo update later
-      role = CharacterRole.FIGHTER)
+      rarity = CharacterRarity.EPIC,
+      role = CharacterRole.FIGHTER,
+      CharacterType.INFERNO
+    )
       
     val inv : CharacterInventory = new CharacterInventory()
+
+    val moveset: Seq[BaseMove]  = Seq(
+      new BaseMove("Iron Fists", attr.Movetype, 0,0, Seq.empty),
+      new BaseMove("Flames of Fury", attr.Movetype, 0,4, Seq.empty),
+      new BaseMove("Rage Avatar", attr.Movetype, 3,4, Seq.empty)
+    )
 
     val MC : BaseCharacter = new BaseCharacter(
       personalInfo = info,
       characterAttributes = attr,
-      characterInventory = inv)
+      characterInventory = inv,
+      moveset = moveset
+    )
 
+    MC.generateStats(info, attr)
     MC.displayInfo()
   }
 }

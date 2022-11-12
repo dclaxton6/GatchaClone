@@ -1,0 +1,5 @@
+package Enemy
+
+class BaseEnemy {
+
+}

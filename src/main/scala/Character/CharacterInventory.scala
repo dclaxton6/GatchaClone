@@ -1,5 +1,0 @@
-package Character
-
-class CharacterInventory {
-
-}

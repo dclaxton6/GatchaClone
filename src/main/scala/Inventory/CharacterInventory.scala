@@ -1,0 +1,5 @@
+package Inventory
+
+class CharacterInventory {
+
+}
